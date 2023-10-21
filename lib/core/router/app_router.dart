@@ -15,7 +15,7 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
   GoRoute(
     path: '/loginPage',
     builder: (BuildContext context, GoRouterState state) {
-      return const LoginPage();
+      return   LoginPage();
     },
   ),
   GoRoute(
