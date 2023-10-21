@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'fav_data.g.dart';
 
 @HiveType(typeId: 2)
-class UserCredential {
+class FavData {
   @HiveField(0)
   String bookID;
 
@@ -15,7 +15,7 @@ class UserCredential {
 
   @HiveField(3)
   String bookImage;
-  UserCredential({
+  FavData({
     required this.bookID,
     required this.bookTitle,
     required this.bookAuthors,

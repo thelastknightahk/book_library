@@ -1,41 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'fav_data.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class FavDataAdapter extends TypeAdapter<FavData> {
+class UserAdapter extends TypeAdapter<User> {
   @override
-  final int typeId = 2;
+  final int typeId = 0;
 
   @override
-  FavData read(BinaryReader reader) {
+  User read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return FavData(
-      bookID: fields[0] as String,
-      bookTitle: fields[1] as String,
-      bookAuthors: fields[2] as String,
-      bookImage: fields[3] as String,
-    );
+    return User()
+      ..username = fields[0] as String
+      ..password = fields[1] as String;
   }
 
   @override
-  void write(BinaryWriter writer, FavData obj) {
+  void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.bookID)
-      ..writeByte(1)
-      ..write(obj.bookTitle)
       ..writeByte(2)
-      ..write(obj.bookAuthors)
-      ..writeByte(3)
-      ..write(obj.bookImage);
+      ..writeByte(0)
+      ..write(obj.username)
+      ..writeByte(1)
+      ..write(obj.password);
   }
 
   @override
@@ -44,7 +37,7 @@ class FavDataAdapter extends TypeAdapter<FavData> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FavDataAdapter &&
+      other is UserAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
