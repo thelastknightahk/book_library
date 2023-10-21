@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mvvm_book/presentation/auth/infra/model/user_credential.dart';
 import 'core/router/app_router.dart';
 import 'core/utils/colors/app_colors.dart';
+import 'core/utils/db_constants/db_contants.dart';
 
-void main() {
+void main() async{
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     // systemNavigationBarColor: AppColors.primaryColor, // navigation bar color
     statusBarColor: AppColors.primaryColor, // status bar color
@@ -12,7 +16,11 @@ void main() {
     systemNavigationBarIconBrightness:
         Brightness.light, // color of navigation controls
   ));
-  runApp(MyApp());
+    await Hive.initFlutter(); 
+  Hive.registerAdapter(UserCredentialAdapter());
+  await Hive.openBox(DbConstants.userDB);
+  await Hive.openBox(DbConstants.favDB);
+ runApp(  ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
