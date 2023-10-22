@@ -9,7 +9,7 @@ part of 'fav_state.dart';
 _$FavStateImpl _$$FavStateImplFromJson(Map<String, dynamic> json) =>
     _$FavStateImpl(
       FavList: (json['FavList'] as List<dynamic>?)
-          ?.map((e) => FavData.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => FavData.fromJson(e as String))
           .toList(),
     );
 

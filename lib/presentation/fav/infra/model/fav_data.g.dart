@@ -48,21 +48,3 @@ class FavDataAdapter extends TypeAdapter<FavData> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-FavData _$FavDataFromJson(Map<String, dynamic> json) => FavData(
-      bookID: json['bookID'] as String,
-      bookTitle: json['bookTitle'] as String,
-      bookAuthors: json['bookAuthors'] as String,
-      bookImage: json['bookImage'] as String,
-    );
-
-Map<String, dynamic> _$FavDataToJson(FavData instance) => <String, dynamic>{
-      'bookID': instance.bookID,
-      'bookTitle': instance.bookTitle,
-      'bookAuthors': instance.bookAuthors,
-      'bookImage': instance.bookImage,
-    };

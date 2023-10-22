@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mvvm_book/core/common_widgets/text_styles.dart';
 import 'package:mvvm_book/core/utils/colors/app_colors.dart';
-import 'package:mvvm_book/core/utils/size/screen_size.dart';
+import 'package:mvvm_book/presentation/fav/view_model/fav_view_model.dart';
 import 'package:mvvm_book/presentation/search/view/widgets/search_box_widget.dart';
 
 class SearchPage extends ConsumerWidget {
@@ -11,6 +11,10 @@ class SearchPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var favList = ref.watch(favViewModelNotifierProvider).FavList;
+    if (favList == null) {
+      ref.read(favViewModelNotifierProvider.notifier).getFavList();
+    }
     return Center(
         child: Column(
       mainAxisSize: MainAxisSize.min,
