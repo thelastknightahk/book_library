@@ -24,11 +24,11 @@ void main() async{
 
   await Hive.openBox(DbConstants.userDB); 
   await Hive.openBox(DbConstants.favDB);
- runApp(  ProviderScope(child: MyApp()));
+ runApp(  const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

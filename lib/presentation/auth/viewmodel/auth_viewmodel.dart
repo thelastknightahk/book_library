@@ -19,8 +19,9 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
   Future<void> clearCurrentUser() async {
     _repo.clearCurrentUserData();
+     state = state.copyWith(currentUserData: null);
   }
-
+   
   Future<void> getCurrentUser() async {
    
     var result = await _repo.getCurrentUserData();

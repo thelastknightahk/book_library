@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart'; 
 import 'package:mvvm_book/core/utils/size/screen_size.dart';
 
 import '../../../../core/common_widgets/text_styles.dart';
@@ -14,10 +15,15 @@ Widget searchBoxWidget(BuildContext context) {
         color: AppColors.lightGreyColor),
     child: Align(
         alignment: Alignment.centerLeft,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: TextStyles.normalCenterTextWidget(
-              title: 'Search . . .', color: AppColors.greyColor, fontSize: 16),
+        child: InkWell(
+          onTap: (){
+             context.push('/searchListPage');
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: TextStyles.normalCenterTextWidget(
+                title: 'Search . . .', color: AppColors.greyColor, fontSize: 16),
+          ),
         )),
   );
 }

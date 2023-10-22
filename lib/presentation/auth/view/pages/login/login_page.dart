@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mvvm_book/core/common_widgets/text_styles.dart';
 import 'package:mvvm_book/core/utils/colors/app_colors.dart';
+import 'package:mvvm_book/core/utils/toast/toasts.dart';
 import 'package:mvvm_book/presentation/auth/view/widgets/password_input_widget.dart';
 import 'package:mvvm_book/presentation/auth/view/widgets/user_name_input_widget.dart';
 import 'package:mvvm_book/presentation/auth/viewmodel/auth_viewmodel.dart';
@@ -50,22 +51,55 @@ class LoginPage extends ConsumerWidget {
               const SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
-                  final user = User()
-                    ..username = userNameEditingController.text.trim()
-                    ..password = passwordEditingController.text.trim()
-                    ..alreadyLogined = true;
-                  ref
-                      .read(authViewModelNotifierProvider.notifier)
-                      .saveCurrentUser(user)
-                      .then((value) {
-                    context.replace('/mainPage');
-                  });
+                  if (userNameEditingController.text
+                      .toString()
+                      .trim()
+                      .isEmpty) {
+                    Toasts.showToast(content: 'Fill username!');
+                  } else if (passwordEditingController.text
+                      .toString()
+                      .trim()
+                      .isEmpty) {
+                    Toasts.showToast(content: 'Fill  password!');
+                  } else {
+                    ref
+                        .read(authViewModelNotifierProvider.notifier)
+                        .getCurrentUser();
+                    var userData = ref
+                        .watch(authViewModelNotifierProvider)
+                        .currentUserData;
+                    if (userNameEditingController.text.toString().trim() ==
+                            userData?.username &&
+                        passwordEditingController.text.toString().trim() ==
+                            userData?.password) {
+                            
+                      final user = User()
+                        ..username = userNameEditingController.text.trim()
+                        ..password = passwordEditingController.text.trim()
+                        ..alreadyLogined = true;
+                      ref
+                          .read(authViewModelNotifierProvider.notifier)
+                          .saveCurrentUser(user)
+                          .then((value) {
+                        context.replace('/mainPage');
+                      });
+                    } else {
+                      Toasts.showToast(
+                          content: 'Username or password not correct!');
+                    }
+                  }
                 },
                 child: const Text('Login'),
               ),
               const SizedBox(height: 12.0),
-              TextStyles.normalCenterTextWidget(
-                  title: 'Register Account', color: AppColors.primaryColor)
+              InkWell(
+                onTap: () {
+                  context.replace('/signUpPage');
+                },
+                child: TextStyles.normalCenterTextWidget(
+                    title: "Don't have an account? Register",
+                    color: AppColors.primaryColor),
+              )
             ],
           ),
         ),

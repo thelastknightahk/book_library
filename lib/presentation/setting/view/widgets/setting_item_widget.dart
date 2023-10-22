@@ -18,19 +18,20 @@ Widget settingItemWidget(
         InkWell(
           onTap: onTap,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(
                 iconData,
                 color: AppColors.greyColor,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               TextStyles.normalTextWidget(
-                title: '$title',
+                title: title,
                 fontSize: 16,
-                color: AppColors.blackColor,
+                color: AppColors.greyColor,
                 fontWeight: FontWeight.w500,
               ),
             ],

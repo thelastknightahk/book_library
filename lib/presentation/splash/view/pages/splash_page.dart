@@ -14,29 +14,26 @@ class SplashPage extends ConsumerWidget {
     final authModel = ref.watch(authViewModelNotifierProvider);
 
     if (authModel.currentUserData == null) {
-      print("Hello First ${authModel.currentUserData}");
-      Future.delayed(const Duration(milliseconds: 500), () {
-        ref
+     
+      Future.delayed(const Duration(milliseconds: 500), () { 
+         ref
             .read(authViewModelNotifierProvider.notifier)
             .getCurrentUser()
             .then((value) {
-          Future.delayed(const Duration(milliseconds: 5000), () {
-            try {
-              context.replace('/loginPage');
-            } catch (e) {}
+          Future.delayed(const Duration(milliseconds: 5000), () { 
+              context.replace('/loginPage'); 
           });
         });
+        
       });
-    } else if (authModel.currentUserData?.alreadyLogined == null) {
-      print("Hello already ${authModel.currentUserData}");
     } else if (authModel.currentUserData?.alreadyLogined == false ||
         authModel.currentUserData == null) {
-      print("Hello Second");
+     
       Future.delayed(const Duration(milliseconds: 500), () {
         context.replace('/loginPage');
       });
     } else {
-      print("Hello Third");
+      
       Future.delayed(const Duration(milliseconds: 500), () {
         context.replace('/mainPage');
       });

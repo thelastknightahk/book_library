@@ -9,6 +9,7 @@ part 'fav_state.g.dart';
 class FavState with _$FavState {
 
   factory FavState({
+    // ignore: non_constant_identifier_names
     List<FavData>? FavList
   }) = _FavState;
 

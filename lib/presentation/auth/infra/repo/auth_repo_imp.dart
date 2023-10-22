@@ -13,7 +13,7 @@ class GlobalRepoImp implements AuthRepo {
   Future<void> clearCurrentUserData() async {
     final userBox = await Hive.openBox(DbConstants.userDB);
     userBox.clear();
-    userBox.close();
+   
   }
 
   @override

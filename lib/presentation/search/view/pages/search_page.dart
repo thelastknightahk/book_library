@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart'; 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mvvm_book/core/common_widgets/text_styles.dart';
 import 'package:mvvm_book/core/utils/colors/app_colors.dart';
@@ -19,11 +18,7 @@ class SearchPage extends ConsumerWidget {
         child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        InkWell(
-            onTap: () {
-              context.push('/searchListPage');
-            },
-            child: searchBoxWidget(context)),
+        searchBoxWidget(context),
         const SizedBox(
           height: 20,
         ),
