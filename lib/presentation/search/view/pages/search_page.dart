@@ -20,6 +20,17 @@ class SearchPage extends ConsumerWidget {
               context.push('/searchListPage');
             },
             child: searchBoxWidget(context)),
+        const SizedBox(
+          height: 20,
+        ),
+        TextStyles.normalCenterTextWidget(
+            title: 'Love the books!',
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: AppColors.greyColor),
+        const SizedBox(
+          height: 20,
+        ),
         SizedBox(
             width: 200,
             height: 200,
