@@ -21,7 +21,6 @@ AuthState _$AuthStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthState {
   bool get passwordVisible => throw _privateConstructorUsedError;
-  bool get alreadyLogined => throw _privateConstructorUsedError;
   User? get currentUserData => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({bool passwordVisible, bool alreadyLogined, User? currentUserData});
+  $Res call({bool passwordVisible, User? currentUserData});
 }
 
 /// @nodoc
@@ -52,17 +51,12 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? passwordVisible = null,
-    Object? alreadyLogined = null,
     Object? currentUserData = freezed,
   }) {
     return _then(_value.copyWith(
       passwordVisible: null == passwordVisible
           ? _value.passwordVisible
           : passwordVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      alreadyLogined: null == alreadyLogined
-          ? _value.alreadyLogined
-          : alreadyLogined // ignore: cast_nullable_to_non_nullable
               as bool,
       currentUserData: freezed == currentUserData
           ? _value.currentUserData
@@ -80,7 +74,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool passwordVisible, bool alreadyLogined, User? currentUserData});
+  $Res call({bool passwordVisible, User? currentUserData});
 }
 
 /// @nodoc
@@ -95,17 +89,12 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? passwordVisible = null,
-    Object? alreadyLogined = null,
     Object? currentUserData = freezed,
   }) {
     return _then(_$AuthStateImpl(
       passwordVisible: null == passwordVisible
           ? _value.passwordVisible
           : passwordVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      alreadyLogined: null == alreadyLogined
-          ? _value.alreadyLogined
-          : alreadyLogined // ignore: cast_nullable_to_non_nullable
               as bool,
       currentUserData: freezed == currentUserData
           ? _value.currentUserData
@@ -118,10 +107,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthStateImpl implements _AuthState {
-  _$AuthStateImpl(
-      {this.passwordVisible = false,
-      this.alreadyLogined = false,
-      this.currentUserData});
+  _$AuthStateImpl({this.passwordVisible = false, this.currentUserData});
 
   factory _$AuthStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthStateImplFromJson(json);
@@ -130,14 +116,11 @@ class _$AuthStateImpl implements _AuthState {
   @JsonKey()
   final bool passwordVisible;
   @override
-  @JsonKey()
-  final bool alreadyLogined;
-  @override
   final User? currentUserData;
 
   @override
   String toString() {
-    return 'AuthState(passwordVisible: $passwordVisible, alreadyLogined: $alreadyLogined, currentUserData: $currentUserData)';
+    return 'AuthState(passwordVisible: $passwordVisible, currentUserData: $currentUserData)';
   }
 
   @override
@@ -147,16 +130,14 @@ class _$AuthStateImpl implements _AuthState {
             other is _$AuthStateImpl &&
             (identical(other.passwordVisible, passwordVisible) ||
                 other.passwordVisible == passwordVisible) &&
-            (identical(other.alreadyLogined, alreadyLogined) ||
-                other.alreadyLogined == alreadyLogined) &&
             (identical(other.currentUserData, currentUserData) ||
                 other.currentUserData == currentUserData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, passwordVisible, alreadyLogined, currentUserData);
+  int get hashCode =>
+      Object.hash(runtimeType, passwordVisible, currentUserData);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +156,6 @@ class _$AuthStateImpl implements _AuthState {
 abstract class _AuthState implements AuthState {
   factory _AuthState(
       {final bool passwordVisible,
-      final bool alreadyLogined,
       final User? currentUserData}) = _$AuthStateImpl;
 
   factory _AuthState.fromJson(Map<String, dynamic> json) =
@@ -183,8 +163,6 @@ abstract class _AuthState implements AuthState {
 
   @override
   bool get passwordVisible;
-  @override
-  bool get alreadyLogined;
   @override
   User? get currentUserData;
   @override

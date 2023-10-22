@@ -8,8 +8,7 @@ part 'auth_state.g.dart';
 class AuthState with _$AuthState {
 
   factory AuthState({
-      @Default(false) bool passwordVisible,
-        @Default(false) bool alreadyLogined,
+    @Default(false) bool passwordVisible, 
     User? currentUserData,
   }) = _AuthState;
 

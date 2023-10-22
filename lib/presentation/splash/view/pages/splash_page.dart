@@ -14,16 +14,18 @@ class SplashPage extends ConsumerWidget {
     final authModel = ref.watch(authViewModelNotifierProvider);
 
     if (authModel.currentUserData == null) {
-      ref
-          .read(authViewModelNotifierProvider.notifier)
-          .getCurrentUser()
-          .then((value) {
-        if (authModel.currentUserData == null ||
-            authModel.alreadyLogined == false) {
-          context.replace('/loginPage');
-        } else {
-          context.replace('/mainPage');
-        }
+      Future.delayed(const Duration(milliseconds: 500), () {
+        ref.read(authViewModelNotifierProvider.notifier).getCurrentUser();
+      });
+    } else if (authModel.currentUserData!.alreadyLogined == false ||
+        authModel.currentUserData == null) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        context.replace('/loginPage');
+      });
+      
+    } else { 
+      Future.delayed(const Duration(milliseconds: 500), () {
+        context.replace('/mainPage');
       });
     }
     return Scaffold(

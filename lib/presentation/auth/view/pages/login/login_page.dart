@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mvvm_book/core/common_widgets/text_styles.dart'; 
+import 'package:mvvm_book/core/common_widgets/text_styles.dart';
 import 'package:mvvm_book/core/utils/colors/app_colors.dart';
 import 'package:mvvm_book/presentation/auth/view/widgets/password_input_widget.dart';
 import 'package:mvvm_book/presentation/auth/view/widgets/user_name_input_widget.dart';
@@ -10,7 +11,7 @@ import '../../../infra/model/user.dart';
 
 // ignore: must_be_immutable
 class LoginPage extends ConsumerWidget {
-   LoginPage({super.key});
+  LoginPage({super.key});
   TextEditingController userNameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
   @override
@@ -27,33 +28,44 @@ class LoginPage extends ConsumerWidget {
                 size: 100.0,
               ),
               const SizedBox(height: 20.0),
-              TextStyles.normalCenterTextWidget(title: 'Login to Your Account', fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.greyColor),
-             
+              TextStyles.normalCenterTextWidget(
+                  title: 'Login to Your Account',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.greyColor),
               const SizedBox(height: 20.0),
               userNameInputWidget(
                   context: context,
                   textEditingController: userNameEditingController,
                   title: 'Username'),
               const SizedBox(height: 12.0),
-              passwordInputWidget( 
+              passwordInputWidget(
                   textEditingController: passwordEditingController,
-                  title: "Password", 
+                  title: "Password",
                   onTap: () {
-                     ref.read(authViewModelNotifierProvider.notifier).setPasswordVisible(!globalViewModel.passwordVisible );
-                   
+                    ref
+                        .read(authViewModelNotifierProvider.notifier)
+                        .setPasswordVisible(!globalViewModel.passwordVisible);
                   }),
               const SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
                   final user = User()
-                  .. username = userNameEditingController.text.trim()
-                  .. password = passwordEditingController.text.trim()
-                  ..alreadyLogined = true;
-                  ref.read(authViewModelNotifierProvider.notifier).saveCurrentUser(user);
+                    ..username = userNameEditingController.text.trim()
+                    ..password = passwordEditingController.text.trim()
+                    ..alreadyLogined = true;
+                  ref
+                      .read(authViewModelNotifierProvider.notifier)
+                      .saveCurrentUser(user)
+                      .then((value) {
+                    context.replace('/mainPage');
+                  });
                 },
                 child: const Text('Login'),
               ),
               const SizedBox(height: 12.0),
+              TextStyles.normalCenterTextWidget(
+                  title: 'Register Account', color: AppColors.primaryColor)
             ],
           ),
         ),

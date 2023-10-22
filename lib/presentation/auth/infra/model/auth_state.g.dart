@@ -9,7 +9,6 @@ part of 'auth_state.dart';
 _$AuthStateImpl _$$AuthStateImplFromJson(Map<String, dynamic> json) =>
     _$AuthStateImpl(
       passwordVisible: json['passwordVisible'] as bool? ?? false,
-      alreadyLogined: json['alreadyLogined'] as bool? ?? false,
       currentUserData: json['currentUserData'] == null
           ? null
           : User.fromJson(json['currentUserData'] as Map<String, dynamic>),
@@ -18,6 +17,5 @@ _$AuthStateImpl _$$AuthStateImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$AuthStateImplToJson(_$AuthStateImpl instance) =>
     <String, dynamic>{
       'passwordVisible': instance.passwordVisible,
-      'alreadyLogined': instance.alreadyLogined,
       'currentUserData': instance.currentUserData,
     };
