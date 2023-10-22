@@ -1,16 +1,13 @@
-# mvvm_book
+Testing Project using bookdb api
 
-A new Flutter project.
+Architecture used - MVVM
+State Management - Riverpod
 
-## Getting Started
+Features 
+1) auth
+2) search books
+3) show books
+4) save as fav
+5) delete and logout account
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Enjoy your learning Process!
